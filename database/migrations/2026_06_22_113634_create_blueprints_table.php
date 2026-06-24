@@ -21,6 +21,13 @@ return new class extends Migration
         });
     }
 
+    protected function casts(): array
+    {
+        return [
+            'additional_rules' => 'array',
+        ];
+    }
+
     public function down(): void
     {
         Schema::dropIfExists('blueprints');

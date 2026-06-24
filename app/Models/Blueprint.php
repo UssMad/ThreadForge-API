@@ -18,6 +18,13 @@ class Blueprint extends Model
         'additional_rules',
     ];
 
+    protected function casts(): array
+    {
+        return [
+            'additional_rules' => 'array',
+        ];
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
