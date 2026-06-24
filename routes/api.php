@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BlueprintController;
+use App\Http\Controllers\Api\RawContentController;
 
 
 Route::prefix('auth')->group(function () {
@@ -17,4 +18,8 @@ Route::prefix('auth')->group(function () {
         Route::apiResource('blueprints', BlueprintController::class);
     });
 
+});
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/content/repurpose', [RawContentController::class, 'store']);
 });
