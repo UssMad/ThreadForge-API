@@ -38,7 +38,7 @@ test('user can list their blueprints', function () {
         ->getJson('/auth/blueprints');
 
     $response->assertStatus(200)
-        ->assertJsonCount(3, 'data');
+        ->assertJsonCount(3);
 });
 
 test('user can view their own blueprint', function () {

@@ -19,7 +19,7 @@ test('user can list their generated posts', function () {
         ->getJson('/posts');
 
     $response->assertStatus(200)
-        ->assertJsonCount(3, 'data');
+        ->assertJsonCount(3);
 });
 
 test('user can view their own generated post', function () {
