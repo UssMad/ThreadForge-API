@@ -14,12 +14,12 @@ class UpdateBlueprintRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255',
-            'audience_target' => 'required|string',
-            'tone' => 'required|string',
-            'max_hashtags' => 'required|integer|min:0',
-            'max_characters' => 'required|integer|min:1',
-            'additional_rules' => 'nullable',
+            'name' => 'sometimes|required|string|max:255',
+            'audience_target' => 'sometimes|required|string',
+            'tone' => 'sometimes|required|string',
+            'max_hashtags' => 'sometimes|required|integer|min:0',
+            'max_characters' => 'sometimes|required|integer|min:1',
+            'additional_rules' => 'sometimes|nullable',
         ];
     }
 }

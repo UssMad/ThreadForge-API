@@ -59,7 +59,7 @@ test('user can view conversation history', function () {
         ->getJson("/chat/conversations/{$conversation->id}");
 
     $response->assertStatus(200)
-        ->assertJsonCount(2, 'data')
+        ->assertJsonCount(2)
         ->assertJson([
             ['role' => 'user', 'content' => 'Hello'],
             ['role' => 'assistant', 'content' => 'Hi there'],

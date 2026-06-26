@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\AI\Agents\GhostwriterAgent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ChatRequest;
+use App\Http\Requests\StartConversationRequest;
 use App\Http\Resources\MessageResource;
 use App\Models\Conversation;
 use App\Models\Message;
-use Illuminate\Http\Request;
 
 class ChatController extends Controller
 {
@@ -27,11 +27,11 @@ class ChatController extends Controller
      *   }
      * }
      */
-    public function startConversation(Request $request)
+    public function startConversation(StartConversationRequest $request)
     {
-        $data = $request->validate(['generated_post_id' => 'nullable|exists:generated_posts,id']);
-
-        $conversation = $request->user()->conversations()->create($data);
+        $conversation = $request->user()->conversations()->create(
+            $request->validated()
+        );
 
         return response()->json([
             'conversation' => [
